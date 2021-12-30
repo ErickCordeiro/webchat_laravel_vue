@@ -14,17 +14,25 @@ class UserController extends Controller
     {
 
         $userLogged = Auth::user(); //Pegando o Usuário Logado
-        $users = User::where('id' , '!=', $userLogged->id)->get();
-        
+        $users = User::where('id', '!=', $userLogged->id)->get();
+
         return response()->json([
             'users' => $users,
         ], Response::HTTP_OK);
     }
 
-    public function show( User $user)
+    public function show(User $user)
     {
         return response()->json([
             'user' => $user
+        ], Response::HTTP_OK);
+    }
+
+    public function me()
+    {
+        $userLogged = Auth::user();
+        return response()->json([
+            'user' => $userLogged
         ], Response::HTTP_OK);
     }
 }

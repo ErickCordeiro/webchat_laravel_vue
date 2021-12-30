@@ -3,10 +3,11 @@ require('./bootstrap');
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
-import moment from 'moment';
+import store from './store';
 
-const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'WebChat Laravel + VueJs';
 
+store.dispatch('userStateAction');
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
